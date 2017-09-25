@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Introduction {
+namespace _01_Introduction {
     class Program {
         static void Main(string[] args) {
             string path = @"C:\windows";
@@ -12,7 +14,7 @@ namespace Introduction {
             ShowLargeFilesWithLinq(path);
             //Console.ReadKey();
         }
-       
+
         // Show 5 biggest files without LINQ
         private static void ShowLargeFilesWithoutLinq(string path) {
             DirectoryInfo directory = new DirectoryInfo(path);
@@ -33,13 +35,6 @@ namespace Introduction {
             foreach (var file in query) {
                 Console.WriteLine($"{file.Name,-20} : { file.Length,10:N0}");
             }
-        }
-    }
-
-
-    public class FileInfoComparer : IComparer<FileInfo> {
-        public int Compare(FileInfo x, FileInfo y) {
-            return y.Length.CompareTo(x.Length);
         }
     }
 }

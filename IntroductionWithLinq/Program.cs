@@ -12,8 +12,7 @@ namespace Introduction {
             ShowLargeFilesWithLinq(path);
             //Console.ReadKey();
         }
-       
-        // Show 5 biggest files without LINQ
+
         private static void ShowLargeFilesWithoutLinq(string path) {
             DirectoryInfo directory = new DirectoryInfo(path);
             FileInfo[] files = directory.GetFiles();
@@ -24,13 +23,13 @@ namespace Introduction {
             }
         }
 
-        // Show 5 biggest files with LINQ
         private static void ShowLargeFilesWithLinq(string path) {
             var query = new DirectoryInfo(path).GetFiles()
                         .OrderByDescending(f => f.Length)
                         .Take(5);
 
             foreach (var file in query) {
+
                 Console.WriteLine($"{file.Name,-20} : { file.Length,10:N0}");
             }
         }
